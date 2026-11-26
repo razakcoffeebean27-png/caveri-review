@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Hotel Caveri Inn | Share Your Experience</title>
+
+<style>
+:root {
+  --brown: #3D2920;
+  --beige: #D5B17B;
+  --cream: #F5F1E8;
+  --green: #465A42;
+  --text: #302820;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: var(--cream);
+  color: var(--text);
+  min-height: 100vh;
+  padding: 24px 14px;
+}
+
+.container {
+  max-width: 470px;
+  margin: auto;
+  background: white;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 10px 35px rgba(0,0,0,0.08);
+}
+
+.header {
+  background: var(--brown);
+  color: white;
+  text-align: center;
+  padding: 34px 20px 30px;
+}
+
+.logo-text {
+  font-family: Georgia, serif;
+  font-size: 25px;
+  letter-spacing: 2px;
+  font-weight: normal;
+}
+
+.location {
+  color: var(--beige);
+  font-size: 10px;
+  letter-spacing: 4px;
+  margin-top: 9px;
+}
+
+.header h2 {
+  font-family: Georgia, serif;
+  font-size: 27px;
+  font-weight: normal;
+  margin-top: 28px;
+}
+
+.header p {
+  color: #e5d9c9;
+  font-size: 13px;
+  line-height: 1.6;
+  margin-top: 9px;
+}
+
+.content {
+  padding: 27px 23px;
+}
+
+.intro {
+  font-size: 13px;
+  color: #777;
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
+
+.question {
+  margin-bottom: 23px;
+}
+
+.question label {
+  display: block;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.question small {
+  display: block;
+  color: #888;
+  margin-top: 6px;
+  font-size: 11px;
+}
+
+select, textarea {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #e5ded4;
+  border-radius: 9px;
+  background: #fff;
+  color: var(--text);
+  font-size: 14px;
+  outline: none;
+  font-family: inherit;
+}
+
+select:focus, textarea:focus {
+  border-color: var(--beige);
+}
+
+textarea {
+  min-height: 95px;
+  resize: vertical;
+  line-height: 1.5;
+}
+
+.primary-btn {
+  width: 100%;
+  padding: 16px;
+  border: none;
+  border-radius: 9px;
+  background: var(--brown);
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.primary-btn:hover {
+  background: var(--green);
+}
+
+.secondary-btn {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid var(--brown);
+  border-radius: 9px;
+  background: white;
+  color: var(--brown);
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+#result {
+  display: none;
+  margin-top: 28px;
+  padding-top: 25px;
+  border-top: 1px solid #eee;
+}
+
+.result-title {
+  font-family: Georgia, serif;
+  font-size: 23px;
+  margin-bottom: 8px;
+}
+
+.result-description {
+  color: #777;
+  font-size: 12px;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.review-box {
+  background: var(--cream);
+  padding: 17px;
+  border-radius: 10px;
+  line-height: 1.8;
+  font-size: 14px;
+  border: 1px solid #eee2d2;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  margin-bottom: 16px;
+}
+
+.status {
+  display: none;
+  text-align: center;
+  padding: 13px;
+  margin-top: 14px;
+  border-radius: 8px;
+  background: #edf5ed;
+  color: #315b35;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.note {
+  font-size: 11px;
+  color: #888;
+  line-height: 1.7;
+  text-align: center;
+  margin-top: 17px;
+}
+
+.footer {
+  background: #faf8f4;
+  text-align: center;
+  padding: 20px;
+  color: #777;
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.footer strong {
+  color: var(--brown);
+}
+
+@media (max-width: 380px) {
+  .content {
+    padding: 22px 17px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- HEADER -->
+  <header class="header">
+    <h1 class="logo-text">HOTEL CAVERI INN</h1>
+
+    <div class="location">
+      MADIKERI · COORG
+    </div>
+
+    <h2>How Was Your Stay?</h2>
+
+    <p>
+      We hope you had a comfortable stay.
+      Share your experience with us.
+    </p>
+  </header>
+
+
+  <!-- QUESTIONNAIRE -->
+  <main class="content">
+
+    <p class="intro">
+      We'd love to hear about your experience at
+      Hotel Caveri Inn. Answer a few simple questions
+      to prepare your review.
+    </p>
+
+
+    <div class="question">
+      <label for="room">
+        01. How would you describe your room?
+      </label>
+
+      <select id="room">
+        <option value="">Choose your experience</option>
+        <option>comfortable</option>
+        <option>clean and well maintained</option>
+        <option>spacious and relaxing</option>
+        <option>simple and practical</option>
+        <option>in need of improvement</option>
+      </select>
+    </div>
+
+
+    <div class="question">
+      <label for="staff">
+        02. How was your experience with our staff?
+      </label>
+
+      <select id="staff">
+        <option value="">Choose your experience</option>
+        <option>friendly and welcoming</option>
+        <option>helpful and supportive</option>
+        <option>polite and professional</option>
+        <option>average</option>
+        <option>in need of improvement</option>
+      </select>
+    </div>
+
+
+    <div class="question">
+      <label for="clean">
+        03. How was the overall cleanliness?
+      </label>
+
+      <select id="clean">
+        <option value="">Choose your experience</option>
+        <option>very good</option>
+        <option>good</option>
+        <option>average</option>
+        <option>could be improved</option>
+      </select>
+    </div>
+
+
+    <div class="question">
+      <label for="location">
+        04. How was the location?
+      </label>
+
+      <select id="location">
+        <option value="">Choose your experience</option>
+        <option>convenient for exploring Madikeri</option>
+        <option>convenient for our travel plans</option>
+        <option>peaceful and comfortable</option>
+        <option>not as convenient as expected</option>
+      </select>
+    </div>
+
+
+    <div class="question">
+      <label for="best">
+        05. What did you appreciate most?
+      </label>
+
+      <select id="best">
+        <option value="">Select an option (optional)</option>
+        <option>the comfortable accommodation</option>
+        <option>the helpful staff</option>
+        <option>the room service</option>
+        <option>the convenient location</option>
+        <option>the overall value</option>
+        <option>the family-friendly environment</option>
+      </select>
+    </div>
+
+
+    <div class="question">
+      <label for="extra">
+        06. Anything else you'd like to share?
+      </label>
+
+      <textarea
+        id="extra"
+        placeholder="Write anything about your personal experience..."
+      ></textarea>
+
+      <small>
+        Optional. Your own words make your review more personal.
+      </small>
+    </div>
+
+
+    <button class="primary-btn" onclick="generateReview()">
+      Generate My Review →
+    </button>
+
+
+    <!-- GENERATED REVIEW -->
+    <section id="result">
+
+      <h2 class="result-title">
+        Your Review Is Ready!
+      </h2>
+
+      <p class="result-description">
+        Please read the review below. Make any changes
+        needed so it accurately reflects your experience.
+      </p>
+
+      <div class="review-box" id="reviewText" contenteditable="true"></div>
+
+      <button class="primary-btn" onclick="copyAndOpenGoogle()">
+        Copy & Continue to Google Reviews →
+      </button>
+
+      <button class="secondary-btn" onclick="editReview()">
+        Edit My Answers
+      </button>
+
+      <div class="status" id="status"></div>
+
+      <p class="note">
+        Your review will only be published when you
+        personally submit it on Google. Please check
+        its accuracy before posting.
+      </p>
+
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <strong>HOTEL CAVERI INN</strong><br>
+    Thank you for choosing us.<br>
+    We look forward to welcoming you again!
+  </footer>
+
+</div>
+
+
+<script>
+
+// ==========================================
+// CONFIGURATION
+// ==========================================
+
+const GOOGLE_REVIEW_URL =
+  "https://search.google.com/local/writereview?placeid=ChIJLTwrf6KqpTsRDeAgH0FGD0c";
+
+
+// ==========================================
+// GENERATE REVIEW
+// ==========================================
+
+function generateReview() {
+
+  const room = document.getElementById("room").value;
+  const staff = document.getElementById("staff").value;
+  const clean = document.getElementById("clean").value;
+  const location = document.getElementById("location").value;
+  const best = document.getElementById("best").value;
+  const extra = document.getElementById("extra").value.trim();
+
+  if (!room && !staff && !clean && !location && !best && !extra) {
+    alert("Please answer at least one question.");
+    return;
+  }
+
+  let review = "I stayed at Hotel Caveri Inn in Madikeri, and here is my experience. ";
+  const details = [];
+
+  if (room) {
+    details.push("The room was " + room);
+  }
+
+  if (staff) {
+    details.push("the staff were " + staff);
+  }
+
+  if (clean) {
+    details.push("the cleanliness was " + clean);
+  }
+
+  if (location) {
+    details.push("the location was " + location);
+  }
+
+  if (details.length > 0) {
+    review += details.join(". ") + ".";
+  }
+
+  if (best) {
+    review += " What I appreciated most was " + best + ".";
+  }
+
+  if (extra) {
+    review += " " + extra;
+  }
+
+  document.getElementById("reviewText").innerText = review;
+  document.getElementById("result").style.display = "block";
+  document.getElementById("status").style.display = "none";
+
+  document.getElementById("result").scrollIntoView({
+    behavior: "smooth",
+    block: "start"
+  });
+}
+
+
+// ==========================================
+// COPY REVIEW AND OPEN GOOGLE
+// ==========================================
+
+async function copyAndOpenGoogle() {
+
+  const review = document.getElementById("reviewText").innerText;
+  const status = document.getElementById("status");
+
+  if (!review.trim()) {
+    alert("Please generate your review first.");
+    return;
+  }
+
+  let googleTab = null;
+
+  if (GOOGLE_REVIEW_URL.startsWith("https://")) {
+    googleTab = window.open("about:blank", "_blank");
+  }
+
+  try {
+    await navigator.clipboard.writeText(review);
+
+    status.style.display = "block";
+    status.innerHTML =
+      "✓ Your review has been copied!<br>" +
+      "Google Reviews is opening. Paste your review there.";
+
+    if (googleTab) {
+      googleTab.location.href = GOOGLE_REVIEW_URL;
+    }
+
+  } catch (error) {
+    if (googleTab) {
+      googleTab.location.href = GOOGLE_REVIEW_URL;
+    }
+
+    status.style.display = "block";
+    status.innerText =
+      "Please select and copy the review text above, then paste it into the Google Reviews tab that just opened.";
+  }
+}
+
+
+// ==========================================
+// EDIT ANSWERS
+// ==========================================
+
+function editReview() {
+  document.getElementById("result").style.display = "none";
+  document.getElementById("room").scrollIntoView({
+    behavior: "smooth",
+    block: "center"
+  });
+}
+
+</script>
+
+</body>
+</html>
