@@ -125,6 +125,7 @@ textarea {
 }
 
 .primary-btn {
+  display: block;
   width: 100%;
   padding: 16px;
   border: none;
@@ -133,6 +134,8 @@ textarea {
   color: white;
   font-size: 15px;
   font-weight: bold;
+  text-align: center;
+  text-decoration: none;
   cursor: pointer;
 }
 
@@ -230,24 +233,16 @@ textarea {
 
 <div class="container">
 
-  <!-- HEADER -->
   <header class="header">
     <h1 class="logo-text">HOTEL CAVERI INN</h1>
-
-    <div class="location">
-      MADIKERI · COORG
-    </div>
-
+    <div class="location">MADIKERI · COORG</div>
     <h2>How Was Your Stay?</h2>
-
     <p>
       We hope you had a comfortable stay.
       Share your experience with us.
     </p>
   </header>
 
-
-  <!-- QUESTIONNAIRE -->
   <main class="content">
 
     <p class="intro">
@@ -256,12 +251,8 @@ textarea {
       to prepare your review.
     </p>
 
-
     <div class="question">
-      <label for="room">
-        01. How would you describe your room?
-      </label>
-
+      <label for="room">01. How would you describe your room?</label>
       <select id="room">
         <option value="">Choose your experience</option>
         <option>comfortable</option>
@@ -272,12 +263,8 @@ textarea {
       </select>
     </div>
 
-
     <div class="question">
-      <label for="staff">
-        02. How was your experience with our staff?
-      </label>
-
+      <label for="staff">02. How was your experience with our staff?</label>
       <select id="staff">
         <option value="">Choose your experience</option>
         <option>friendly and welcoming</option>
@@ -288,12 +275,8 @@ textarea {
       </select>
     </div>
 
-
     <div class="question">
-      <label for="clean">
-        03. How was the overall cleanliness?
-      </label>
-
+      <label for="clean">03. How was the overall cleanliness?</label>
       <select id="clean">
         <option value="">Choose your experience</option>
         <option>very good</option>
@@ -303,12 +286,8 @@ textarea {
       </select>
     </div>
 
-
     <div class="question">
-      <label for="location">
-        04. How was the location?
-      </label>
-
+      <label for="location">04. How was the location?</label>
       <select id="location">
         <option value="">Choose your experience</option>
         <option>convenient for exploring Madikeri</option>
@@ -318,12 +297,8 @@ textarea {
       </select>
     </div>
 
-
     <div class="question">
-      <label for="best">
-        05. What did you appreciate most?
-      </label>
-
+      <label for="best">05. What did you appreciate most?</label>
       <select id="best">
         <option value="">Select an option (optional)</option>
         <option>the comfortable accommodation</option>
@@ -335,34 +310,22 @@ textarea {
       </select>
     </div>
 
-
     <div class="question">
-      <label for="extra">
-        06. Anything else you'd like to share?
-      </label>
-
+      <label for="extra">06. Anything else you'd like to share?</label>
       <textarea
         id="extra"
         placeholder="Write anything about your personal experience..."
       ></textarea>
-
-      <small>
-        Optional. Your own words make your review more personal.
-      </small>
+      <small>Optional. Your own words make your review more personal.</small>
     </div>
-
 
     <button class="primary-btn" onclick="generateReview()">
       Generate My Review →
     </button>
 
-
-    <!-- GENERATED REVIEW -->
     <section id="result">
 
-      <h2 class="result-title">
-        Your Review Is Ready!
-      </h2>
+      <h2 class="result-title">Your Review Is Ready!</h2>
 
       <p class="result-description">
         Please read the review below. Make any changes
@@ -371,9 +334,16 @@ textarea {
 
       <div class="review-box" id="reviewText" contenteditable="true"></div>
 
-      <button class="primary-btn" onclick="copyAndOpenGoogle()">
+      <a
+        id="googleBtn"
+        class="primary-btn"
+        href="https://www.google.com/maps/place/HOTEL+CAVERI+INN/@12.4152294,75.7369871,17z/data=!3m1!4b1!4m9!3m8!1s0x3ba5aaa27f2b3c2d:0x470f46411f20e00d!5m2!4m1!1i2!8m2!3d12.4152294!4d75.7369871!16s%2Fg%2F11f4wtvkrc"
+        target="_blank"
+        rel="noopener noreferrer"
+        onclick="copyReviewText()"
+      >
         Copy & Continue to Google Reviews →
-      </button>
+      </a>
 
       <button class="secondary-btn" onclick="editReview()">
         Edit My Answers
@@ -391,8 +361,6 @@ textarea {
 
   </main>
 
-
-  <!-- FOOTER -->
   <footer class="footer">
     <strong>HOTEL CAVERI INN</strong><br>
     Thank you for choosing us.<br>
@@ -401,23 +369,8 @@ textarea {
 
 </div>
 
-
 <script>
-
-// ==========================================
-// CONFIGURATION
-// ==========================================
-
-const GOOGLE_REVIEW_URL =
-  "https://search.google.com/local/writereview?placeid=ChIJLTwrf6KqpTsRDeAgH0FGD0c";
-
-
-// ==========================================
-// GENERATE REVIEW
-// ==========================================
-
 function generateReview() {
-
   const room = document.getElementById("room").value;
   const staff = document.getElementById("staff").value;
   const clean = document.getElementById("clean").value;
@@ -433,21 +386,10 @@ function generateReview() {
   let review = "I stayed at Hotel Caveri Inn in Madikeri, and here is my experience. ";
   const details = [];
 
-  if (room) {
-    details.push("The room was " + room);
-  }
-
-  if (staff) {
-    details.push("the staff were " + staff);
-  }
-
-  if (clean) {
-    details.push("the cleanliness was " + clean);
-  }
-
-  if (location) {
-    details.push("the location was " + location);
-  }
+  if (room) details.push("The room was " + room);
+  if (staff) details.push("the staff were " + staff);
+  if (clean) details.push("the cleanliness was " + clean);
+  if (location) details.push("the location was " + location);
 
   if (details.length > 0) {
     review += details.join(". ") + ".";
@@ -471,54 +413,32 @@ function generateReview() {
   });
 }
 
-
-// ==========================================
-// COPY REVIEW AND OPEN GOOGLE
-// ==========================================
-
-async function copyAndOpenGoogle() {
-
+function copyReviewText() {
   const review = document.getElementById("reviewText").innerText;
   const status = document.getElementById("status");
 
-  if (!review.trim()) {
-    alert("Please generate your review first.");
-    return;
+  if (!review.trim()) return;
+
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(review).catch(() => fallbackCopy(review));
+  } else {
+    fallbackCopy(review);
   }
 
-  let googleTab = null;
-
-  if (GOOGLE_REVIEW_URL.startsWith("https://")) {
-    googleTab = window.open("about:blank", "_blank");
-  }
-
-  try {
-    await navigator.clipboard.writeText(review);
-
-    status.style.display = "block";
-    status.innerHTML =
-      "✓ Your review has been copied!<br>" +
-      "Google Reviews is opening. Paste your review there.";
-
-    if (googleTab) {
-      googleTab.location.href = GOOGLE_REVIEW_URL;
-    }
-
-  } catch (error) {
-    if (googleTab) {
-      googleTab.location.href = GOOGLE_REVIEW_URL;
-    }
-
-    status.style.display = "block";
-    status.innerText =
-      "Please select and copy the review text above, then paste it into the Google Reviews tab that just opened.";
-  }
+  status.style.display = "block";
+  status.innerHTML =
+    "✓ Your review has been copied!<br>" +
+    "Tap <strong>Reviews → Write a review</strong> on Google and paste it.";
 }
 
-
-// ==========================================
-// EDIT ANSWERS
-// ==========================================
+function fallbackCopy(text) {
+  const temp = document.createElement("textarea");
+  temp.value = text;
+  document.body.appendChild(temp);
+  temp.select();
+  document.execCommand("copy");
+  document.body.removeChild(temp);
+}
 
 function editReview() {
   document.getElementById("result").style.display = "none";
@@ -527,7 +447,6 @@ function editReview() {
     block: "center"
   });
 }
-
 </script>
 
 </body>
